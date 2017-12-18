@@ -11,6 +11,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
 import { LoginPage } from '../pages/login/login';
+import { AddPage } from '../pages/add/add';
 
 // Providers
 import { WordbaseProvider } from '../providers/wordbase/wordbase';
@@ -20,6 +21,7 @@ import { WordbaseProvider } from '../providers/wordbase/wordbase';
     MyApp,
     HomePage,
     LoginPage,
+    AddPage,
     SettingsPage
   ],
   imports: [
@@ -32,6 +34,7 @@ import { WordbaseProvider } from '../providers/wordbase/wordbase';
     MyApp,
     HomePage,
     LoginPage,
+    AddPage,
     SettingsPage
   ],
   providers: [

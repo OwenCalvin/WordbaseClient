@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>add</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let item of items.datas;index as i">
+    <ion-label inline>Data {{i}}</ion-label>
+    <ion-input type="text" name="input{{i}}" [(ngModel)]="items.datas[i].value" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
+  </ion-item>
+  <ion-icon name="add-circle" (click)="add()"></ion-icon>
+  <button ion-button (click)="inspect()">Add Todo</button>
+</ion-content>

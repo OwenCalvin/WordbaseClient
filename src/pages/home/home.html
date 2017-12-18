@@ -10,7 +10,8 @@
     <ion-card *ngFor="let item of Words">
       {{item.title}}
       <div *ngFor="let data of item.datas">
-        {{data[0]}} {{data[1]}}
+        {{data.name}} {{data.value}}
       </div>
     </ion-card>
+    <button ion-button [navPush]="PushPage">Add</button>
 </ion-content>
