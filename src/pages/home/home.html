@@ -7,11 +7,12 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card *ngFor="let item of Words">
+    <ion-card *ngFor="let item of Words;index as i">
       {{item.title}}
-      <div *ngFor="let data of item.datas">
+      <ion-item *ngFor="let data of item.datas">
         {{data.name}} {{data.value}}
-      </div>
+      </ion-item>
+      <ion-icon name="remove-circle" (click)="remove(i)"></ion-icon>
     </ion-card>
     <button ion-button [navPush]="PushPage">Add</button>
 </ion-content>

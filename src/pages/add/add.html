@@ -1,14 +1,34 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>add</ion-title>
+    <ion-title>Add</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-item *ngFor="let item of items.datas;index as i">
-    <ion-label inline>Data {{i}}</ion-label>
-    <ion-input type="text" name="input{{i}}" [(ngModel)]="items.datas[i].value" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
+  <ion-item>
+    <ion-label inline>Title</ion-label>
+    <ion-input type="text" name="inputTitle" [(ngModel)]="item.title" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
   </ion-item>
+  <ion-row *ngFor="let el of item.datas;index as i">
+    <ion-col>
+      <ion-item >
+        <ion-label inline>Name {{i}}</ion-label>
+        <ion-input type="text" name="inputName{{i}}" [(ngModel)]="item.datas[i].name" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label inline>Value {{i}}</ion-label>
+        <ion-input type="text" name="inputValue{{i}}" [(ngModel)]="item.datas[i].value" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-icon>
+        <ion-icon name="remove-circle" (click)="delete(i)"></ion-icon>
+      </ion-icon>
+    </ion-col>
+  </ion-row>
   <ion-icon name="add-circle" (click)="add()"></ion-icon>
-  <button ion-button (click)="inspect()">Add Todo</button>
+  <button ion-button (click)="send()">Send</button>
+  <button ion-button (click)="inspect()">Inspect</button>
 </ion-content>

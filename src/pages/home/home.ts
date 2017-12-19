@@ -8,11 +8,23 @@ import { AddPage } from '../../pages/add/add';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  PushPage: any;
-  Words: any;
-  constructor(public navCtrl: NavController, private wordbaseProvider: WordbaseProvider) {
-    this.PushPage = AddPage;
-    wordbaseProvider.getWords().subscribe(data => {
+  PushPage = AddPage;
+  Words: any[];
+  constructor(public navCtrl: NavController, public wordbaseProvider: WordbaseProvider) {}
+
+  remove(index) {
+    console.log(this.Words[index]);
+    this.wordbaseProvider.deleteWord(this.Words[index]).subscribe(data => {
+      this.wordbaseProvider.removeFromArray(this.Words, index);
+    });
+  }
+
+  ionViewDidEnter() {
+    this.updateWords();
+  }
+
+  updateWords() {
+    this.wordbaseProvider.getWords().subscribe((data: any[]) => {
       this.Words = data;
     });
   }
