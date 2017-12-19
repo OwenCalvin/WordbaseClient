@@ -15,6 +15,7 @@ import { AddPage } from '../pages/add/add';
 
 // Providers
 import { WordbaseProvider } from '../providers/wordbase/wordbase';
+import { ToolboxProvider } from '../providers/toolbox/toolbox';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { WordbaseProvider } from '../providers/wordbase/wordbase';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     WordbaseProvider,
+    ToolboxProvider,
   ]
 })
 export class AppModule {}

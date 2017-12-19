@@ -6,8 +6,9 @@ export class WordbaseProvider {
   UserID: string;
   ServerURL = 'http://localhost/';
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(
+    public http: HttpClient
+  ) {}
 
   getWords() {
     return this.get('get');
@@ -23,10 +24,6 @@ export class WordbaseProvider {
 
   login(log, password) {
 
-  }
-
-  removeFromArray(array: any[], index) {
-    array.splice(index, 1);
   }
 
   get(url) {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { WordbaseProvider } from '../../providers/wordbase/wordbase';
+import { ToolboxProvider } from '../../providers/toolbox/toolbox';
 import { AddPage } from '../../pages/add/add';
 
 @Component({
@@ -10,12 +11,17 @@ import { AddPage } from '../../pages/add/add';
 export class HomePage {
   PushPage = AddPage;
   Words: any[];
-  constructor(public navCtrl: NavController, public wordbaseProvider: WordbaseProvider) {}
+  
+  constructor(
+    public navCtrl: NavController, 
+    public wordbaseProvider: WordbaseProvider, 
+    public toolboxProvider: ToolboxProvider
+  ) {}
 
   remove(index) {
     console.log(this.Words[index]);
     this.wordbaseProvider.deleteWord(this.Words[index]).subscribe(data => {
-      this.wordbaseProvider.removeFromArray(this.Words, index);
+      this.toolboxProvider.removeFromArray(this.Words, index);
     });
   }
 

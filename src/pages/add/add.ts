@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { WordbaseProvider } from '../../providers/wordbase/wordbase';
+import { ToolboxProvider } from '../../providers/toolbox/toolbox';
 import { Content } from 'ionic-angular/components/content/content';
 
 @IonicPage()
@@ -21,13 +22,16 @@ export class AddPage {
     })
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public wordbaseProvider: WordbaseProvider) {
-
-  }
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public wordbaseProvider: WordbaseProvider, 
+    public toolboxProvider: ToolboxProvider
+  ) {}
 
   delete(index) {
     console.log(this.item.datas[index]);
-    this.wordbaseProvider.removeFromArray(this.item.datas, index);
+    this.toolboxProvider.removeFromArray(this.item.datas, index);
   }
 
   add() {
@@ -41,7 +45,9 @@ export class AddPage {
   }
 
   send() {
-    this.wordbaseProvider.insertWord(this.item).subscribe();
+    this.wordbaseProvider.insertWord(this.item).subscribe(data => {
+      this.toolboxProvider.presentToast('Word was added successfully');
+    });
   }
 
   inspect() {
