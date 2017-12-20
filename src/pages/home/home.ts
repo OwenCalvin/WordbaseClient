@@ -12,11 +12,10 @@ import { trigger, style, transition, animate, keyframes, query, stagger } from '
     trigger('splice', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('.3s', style({ opacity: 1 }))
+        animate('.2s')
       ]),
       transition(':leave', [
-        style({ opacity: 1 }),
-        animate('.3s', style({ opacity: 0 }))
+        animate('.2s', style({ height: 0 }))
       ]),
     ])
   ]

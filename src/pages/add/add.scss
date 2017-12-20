@@ -2,10 +2,15 @@ page-add {
 
 }
 
+input, .text-input {
+    z-index: -1;
+}
+
 ion-icon {
     width: 100%;
     text-align: center;
     font-size: 50px;
+    z-index: 999;
 }
 
 .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,

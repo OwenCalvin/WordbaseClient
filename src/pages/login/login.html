@@ -6,5 +6,13 @@
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label inline>Username</ion-label>
+    <ion-input type="text" name="inputLog" [(ngModel)]="Log" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label inline>Password</ion-label>
+    <ion-input type="text" name="inputPassword" [(ngModel)]="Password" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
+  </ion-item>
+  <button ion-button (click)="login()">Login</button>
 </ion-content>

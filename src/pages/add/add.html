@@ -9,7 +9,7 @@
     <ion-label inline>Title</ion-label>
     <ion-input type="text" name="inputTitle" [(ngModel)]="item.title" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
   </ion-item>
-  <ion-row *ngFor="let el of item.datas;index as i">
+  <ion-row *ngFor="let el of item.datas;index as i" [@splice]="item.datas.length">
     <ion-col>
       <ion-item >
         <ion-label inline>Name {{i}}</ion-label>

@@ -22,8 +22,8 @@ export class WordbaseProvider {
     return this.post('delete', data);
   }
 
-  login(log, password) {
-
+  login(logInfos) {
+    return this.post('login', logInfos);
   }
 
   get(url) {

@@ -3,11 +3,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { WordbaseProvider } from '../../providers/wordbase/wordbase';
 import { ToolboxProvider } from '../../providers/toolbox/toolbox';
 import { Content } from 'ionic-angular/components/content/content';
+import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
 
 @IonicPage()
 @Component({
   selector: 'page-add',
   templateUrl: 'add.html',
+  animations: [
+    trigger('splice', [
+      transition(':enter', [
+        style({ height: 0 }),
+        animate('.2s')
+      ]),
+      transition(':leave', [
+        animate('.2s', style({ height: 0 }))
+      ]),
+    ])
+  ]
 })
 export class AddPage {
   @ViewChild(Content) Content: Content;
