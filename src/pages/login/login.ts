@@ -11,8 +11,8 @@ import { WordbaseProvider } from '../../providers/wordbase/wordbase';
 })
 export class LoginPage {
   LogInfos = {
-    Log: String,
-    Password: String
+    log: '',
+    password: ''
   }
 
   constructor(
