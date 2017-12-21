@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Console } from '@angular/core/src/console';
 
 @Injectable()
 export class WordbaseProvider {
-  UserID: string;
+  User: any;
   ServerURL = 'http://localhost/';
 
   constructor(
@@ -11,10 +12,11 @@ export class WordbaseProvider {
   ) {}
 
   getWords() {
-    return this.get('get');
+    return this.get('get', new HttpParams().set('_id', this.User._id));
   }
 
   insertWord(data) {
+    data._userId = this.User._id;
     return this.post('insert', data);
   }
 
@@ -26,11 +28,20 @@ export class WordbaseProvider {
     return this.post('login', logInfos);
   }
 
-  get(url) {
-    return this.http.get(this.ServerURL + url, {responseType: 'json'});
+  register(registerInfos) {
+    return this.post('register', registerInfos);
   }
 
-  post(url, data, callback = null) {
-    return this.http.post(this.ServerURL + url, data, {responseType: 'text'});
+  disconnect(callback) {
+    this.User = {};
+    return callback();
+  }
+
+  get(url, params = null) {
+    return this.http.get(this.ServerURL + url, {responseType: 'json', params: params});
+  }
+
+  post(url, data) {
+    return this.http.post(this.ServerURL + url, data, {responseType: 'json'});
   }
 }

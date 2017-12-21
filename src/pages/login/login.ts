@@ -15,6 +15,12 @@ export class LoginPage {
     password: ''
   }
 
+  RegisterInfos = {
+    username: '',
+    email: '',
+    password: ''
+  }
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -23,9 +29,20 @@ export class LoginPage {
   ) {}
 
   login() {
-    this.wordbaseProvider.login(this.LogInfos).subscribe(data => {
-      this.navCtrl.setRoot(HomePage);
-      this.toolboxProvider.presentToast('You are logged');
+    this.wordbaseProvider.login(this.LogInfos).subscribe((data: Object) => {
+      if(data) {
+        this.navCtrl.setRoot(HomePage);
+        this.toolboxProvider.presentToast('You are logged');
+        this.wordbaseProvider.User = data;
+      } else {
+        this.toolboxProvider.presentToast('Retry please');
+      }
+    });
+  }
+
+  register() {
+    this.wordbaseProvider.register(this.RegisterInfos).subscribe(data => {
+      this.toolboxProvider.presentToast('You are registered');
     });
   }
 }

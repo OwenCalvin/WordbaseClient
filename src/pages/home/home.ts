@@ -4,6 +4,7 @@ import { WordbaseProvider } from '../../providers/wordbase/wordbase';
 import { ToolboxProvider } from '../../providers/toolbox/toolbox';
 import { AddPage } from '../../pages/add/add';
 import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -39,6 +40,12 @@ export class HomePage {
 
   ionViewDidEnter() {
     this.updateWords();
+  }
+
+  disconnect() {
+    this.wordbaseProvider.disconnect(() => {
+      this.navCtrl.setRoot(LoginPage);
+    });
   }
 
   updateWords() {

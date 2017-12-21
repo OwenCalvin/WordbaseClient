@@ -27,7 +27,6 @@ export class AddPage {
   item = {
     title: '',
     color: '#fefefe',
-    _userId: '5a377c0b4d91202b5ce40ef4',
     datas: new Array({
       name: '',
       value: ''
