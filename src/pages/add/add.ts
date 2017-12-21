@@ -24,7 +24,7 @@ import { trigger, style, transition, animate, keyframes, query, stagger } from '
 export class AddPage {
   @ViewChild(Content) Content: Content;
 
-  item = {
+  Item = {
     title: '',
     color: '#fefefe',
     datas: new Array({
@@ -41,13 +41,12 @@ export class AddPage {
   ) {}
 
   delete(index) {
-    console.log(this.item.datas[index]);
-    this.toolboxProvider.removeFromArray(this.item.datas, index);
+    this.toolboxProvider.removeFromArray(this.Item.datas, index);
   }
 
   add() {
-    if(this.item.datas.length <= 100) {
-      this.item.datas.push({
+    if(this.Item.datas.length <= 100) {
+      this.Item.datas.push({
         name: '',
         value: ''
       });
@@ -56,12 +55,12 @@ export class AddPage {
   }
 
   send() {
-    this.wordbaseProvider.insertWord(this.item).subscribe(data => {
+    this.wordbaseProvider.insertWord(this.Item).subscribe(data => {
       this.toolboxProvider.presentToast('Word was added successfully');
     });
   }
 
   inspect() {
-    console.log(this.item.datas);
+    console.log(this.Item.datas);
   }
 }

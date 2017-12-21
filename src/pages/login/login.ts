@@ -29,7 +29,7 @@ export class LoginPage {
   ) {}
 
   login() {
-    this.wordbaseProvider.login(this.LogInfos).subscribe((data: Object) => {
+    this.wordbaseProvider.login(this.LogInfos).subscribe(data => {
       if(data) {
         this.navCtrl.setRoot(HomePage);
         this.toolboxProvider.presentToast('You are logged');

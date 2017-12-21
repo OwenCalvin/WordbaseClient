@@ -14,7 +14,7 @@
     <ion-label inline>Password</ion-label>
     <ion-input type="text" name="inputPassword" [(ngModel)]="LogInfos.password" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
   </ion-item>
-  <button ion-button (click)="login()">Login</button>
+  <button ion-button round (click)="login()">Login</button>
   <ion-item>
     <ion-label inline>Username</ion-label>
     <ion-input type="text" name="inputLog" [(ngModel)]="RegisterInfos.username" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
@@ -27,5 +27,5 @@
     <ion-label inline>Password</ion-label>
     <ion-input type="text" name="inputPassword" [(ngModel)]="RegisterInfos.password" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
   </ion-item>
-  <button ion-button (click)="register()">Register</button>
+  <button ion-button round (click)="register()">Register</button>
 </ion-content>

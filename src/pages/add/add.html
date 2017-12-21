@@ -7,19 +7,19 @@
 <ion-content padding>
   <ion-item>
     <ion-label inline>Title</ion-label>
-    <ion-input type="text" name="inputTitle" [(ngModel)]="item.title" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
+    <ion-input type="text" name="inputTitle" [(ngModel)]="Item.title" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
   </ion-item>
-  <ion-row *ngFor="let el of item.datas;index as i" [@splice]="item.datas.length">
+  <ion-row *ngFor="let el of Item.datas;index as i" [@splice]="Item.datas.length">
     <ion-col>
       <ion-item >
         <ion-label inline>Name {{i}}</ion-label>
-        <ion-input type="text" name="inputName{{i}}" [(ngModel)]="item.datas[i].name" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
+        <ion-input type="text" name="inputName{{i}}" [(ngModel)]="Item.datas[i].name" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
       </ion-item>
     </ion-col>
     <ion-col>
       <ion-item>
         <ion-label inline>Value {{i}}</ion-label>
-        <ion-input type="text" name="inputValue{{i}}" [(ngModel)]="item.datas[i].value" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
+        <ion-input type="text" name="inputValue{{i}}" [(ngModel)]="Item.datas[i].value" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
       </ion-item>
     </ion-col>
     <ion-col>
