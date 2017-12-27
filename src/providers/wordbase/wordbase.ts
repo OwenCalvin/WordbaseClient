@@ -5,7 +5,8 @@ import { Console } from '@angular/core/src/console';
 @Injectable()
 export class WordbaseProvider {
   User: any;
-  ServerURL = 'http://localhost/';
+  ServerURL = 'http://www.davenstudio.com';
+  ServerPort = 4000;
 
   constructor(
     public http: HttpClient
@@ -38,10 +39,14 @@ export class WordbaseProvider {
   }
 
   get(url, params = null) {
-    return this.http.get(this.ServerURL + url, {responseType: 'json', params: params});
+    return this.http.get(this.getFullUrl(url), {responseType: 'json', params: params});
   }
 
   post(url, data) {
-    return this.http.post(this.ServerURL + url, data, {responseType: 'json'});
+    return this.http.post(this.getFullUrl(url), data, {responseType: 'text'});
+  }
+
+  getFullUrl(url = '') {
+    return this.ServerURL + ':' + this.ServerPort + '/' + url;
   }
 }

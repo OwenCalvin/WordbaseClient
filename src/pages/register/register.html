@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="register()">
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text" name="inputLog" [(ngModel)]="RegisterInfos.username" [ngModelOptions]="{updateOn: 'submit'}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" name="inputEmail" [(ngModel)]="RegisterInfos.email" [ngModelOptions]="{updateOn: 'submit'}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" name="inputPassword" [(ngModel)]="RegisterInfos.password" [ngModelOptions]="{updateOn: 'submit'}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Confirm</ion-label>
+      <ion-input type="password" name="inputConfirm" [(ngModel)]="RegisterInfos.confirm" [ngModelOptions]="{updateOn: 'submit'}"></ion-input>
+    </ion-item>
+    <button type="submit" ion-button round>Register</button>
+    <button type="submit" ion-button round navPop>Login</button>
+  </form> 
+</ion-content>

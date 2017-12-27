@@ -13,6 +13,7 @@ import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
 import { LoginPage } from '../pages/login/login';
 import { AddPage } from '../pages/add/add';
+import { RegisterPage } from '../pages/register/register';
 
 // Providers
 import { WordbaseProvider } from '../providers/wordbase/wordbase';
@@ -24,7 +25,8 @@ import { ToolboxProvider } from '../providers/toolbox/toolbox';
     HomePage,
     LoginPage,
     AddPage,
-    SettingsPage
+    SettingsPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { ToolboxProvider } from '../providers/toolbox/toolbox';
     HomePage,
     LoginPage,
     AddPage,
-    SettingsPage
+    SettingsPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,

@@ -5,30 +5,31 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-label inline>Title</ion-label>
-    <ion-input type="text" name="inputTitle" [(ngModel)]="Item.title" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
-  </ion-item>
-  <ion-row *ngFor="let el of Item.datas;index as i" [@splice]="Item.datas.length">
-    <ion-col>
-      <ion-item >
-        <ion-label inline>Name {{i}}</ion-label>
-        <ion-input type="text" name="inputName{{i}}" [(ngModel)]="Item.datas[i].name" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <ion-label inline>Value {{i}}</ion-label>
-        <ion-input type="text" name="inputValue{{i}}" [(ngModel)]="Item.datas[i].value" [ngModelOptions]="{updateOn: 'blur'}"></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-icon>
-        <ion-icon name="remove-circle" (click)="delete(i)"></ion-icon>
-      </ion-icon>
-    </ion-col>
-  </ion-row>
-  <ion-icon name="add-circle" (click)="add()"></ion-icon>
-  <button ion-button (click)="send()">Send</button>
-  <button ion-button (click)="inspect()">Inspect</button>
+  <form (ngSubmit)="send()">
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-input type="text" name="inputTitle" [(ngModel)]="Item.title" [ngModelOptions]="{updateOn: 'submit'}"></ion-input>
+    </ion-item>
+    <ion-row *ngFor="let el of Item.datas;index as i" [@splice]="Item.datas.length">
+      <ion-col>
+        <ion-item >
+          <ion-label floating>Name</ion-label>
+          <ion-input type="text" name="inputName{{i}}" [(ngModel)]="Item.datas[i].name" [ngModelOptions]="{updateOn: 'submit'}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label floating>Value</ion-label>
+          <ion-input type="text" name="inputValue{{i}}" [(ngModel)]="Item.datas[i].value" [ngModelOptions]="{updateOn: 'submit'}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-icon>
+          <ion-icon name="remove-circle" (click)="delete(i)"></ion-icon>
+        </ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-icon name="add-circle" (click)="add()"></ion-icon>
+    <button type="submit" ion-button round>Send</button>
+  </form>
 </ion-content>

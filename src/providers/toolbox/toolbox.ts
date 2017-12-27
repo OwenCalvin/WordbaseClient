@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastController } from 'ionic-angular';
 
@@ -10,6 +9,10 @@ export class ToolboxProvider {
   
   removeFromArray(array: any[], index) {
     array.splice(index, 1);
+  }
+
+  formatPresentToast(data) {
+    this.presentToast(data.code + ': ' + data.what + ' ' + data.why);
   }
 
   presentToast(message, duration = 1000, position = 'top') {
