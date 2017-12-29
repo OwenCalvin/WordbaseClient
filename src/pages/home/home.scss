@@ -9,10 +9,25 @@
     opacity: .7;
 }
 
+.toolbar-background {
+    background: white;
+}
+
+ion-header {
+    padding: 7px 0; 
+    -webkit-box-shadow: 0px 6px 12px -4px rgba(0, 36, 81, 0.1);
+    -moz-box-shadow: 0px 6px 12px -4px rgba(0, 36, 81, 0.1);
+    box-shadow: 0px 6px 12px -4px rgba(0, 36, 81, 0.1);
+}
+
 .username {
     font-weight: bold;
     font-size: 1.5em;
-    border-bottom: 3px solid #002654;
+    background: rgba(59, 67, 107, .7);
+    padding: 5px 15px;
+    border-radius: 10px;
+    color: white;
+    /*border-bottom: 3px solid #002654;*/
 }
 
 .color {
@@ -47,10 +62,10 @@
 
 .card {
     overflow: hidden;
-    width: 90%;
+    width: 92%;
     display: block;
     margin: auto;
-    margin-bottom: 45px;
+    margin-bottom: 50px;
     -webkit-box-shadow: 0px 5px 52px -5px rgba(0,18,85,0.15);
     -moz-box-shadow: 0px 5px 52px -5px rgba(0,18,85,0.15);
     box-shadow: 0px 5px 52px -5px rgba(0,18,85,0.15);
@@ -61,14 +76,14 @@
 .fav {
     margin-left: auto;
     margin-right: auto;
-    background: #ff4e80;
-    background: -moz-linear-gradient(-45deg, #ff4e80 0%, #ff9495 100%);
-    background: -webkit-linear-gradient(-45deg, #ff4e80 0%,#ff9495 100%);
-    background: linear-gradient(135deg, #ff4e80 0%,#ff9495 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff4e80', endColorstr='#ff9495',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    /*-webkit-box-shadow: 0px 6px 12px -4px rgba(83,158,250,0.7);
-    -moz-box-shadow: 0px 6px 12px -4px rgba(83,158,250,0.7);
-    box-shadow: 0px 6px 12px -4px rgba(83,158,250,0.7);*/
+    background: rgb(59, 67, 107);
+    background: -moz-linear-gradient(-45deg, rgb(59, 67, 107) 0%,rgba(41, 46, 73, 0.849) 100%);
+    background: -webkit-linear-gradient(-45deg, rgb(59, 67, 107) 0%,rgba(41, 46, 73, 0.849) 100%);
+    background: linear-gradient(135deg, rgb(59, 67, 107) 0%,rgba(41, 46, 73, 0.849) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgb(59, 67, 107)', endColorstr='rgba(41, 46, 73, 0.849)',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    -webkit-box-shadow: 0px 6px 12px -4px rgb(59, 67, 107);
+    -moz-box-shadow: 0px 6px 12px -4px rgb(59, 67, 107);
+    box-shadow: 0px 6px 12px -4px rgb(59, 67, 107);
     transform: scale(.8);
 }
 
@@ -84,9 +99,13 @@ ion-slide {
     transform: scale(.95);
 }
 
+.toolbar-title-md {
+    padding: 0;
+}
+
 .add {
     float: right;
-    color: #002654;
+    color: rgba(59, 67, 107, .9);
     margin-right: 25px;
     font-size: 1.4em;
 }
