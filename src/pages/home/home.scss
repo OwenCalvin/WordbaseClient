@@ -1,3 +1,133 @@
-page-home {
+.content {
+    padding-bottom: 25px;
+}
 
+.header-content {
+    display: inline-block;
+    color: #002654;
+    opacity: .7;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 1.5em;
+    border-bottom: 3px solid #002654;
+}
+
+.color {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    padding: 7px 20px;
+    background: #4b87e0;
+    color: white;
+}
+
+.word-name {
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.word-value {
+    font-weight: normal;
+}
+
+.line {
+    width: 35%;
+    background: rgb(230, 230, 230);
+    height: 8px;
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 25px;
+}
+
+.card {
+    overflow: hidden;
+    width: 90%;
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+    -webkit-box-shadow: 0px 5px 52px -5px rgba(0,18,85,0.15);
+    -moz-box-shadow: 0px 5px 52px -5px rgba(0,18,85,0.15);
+    box-shadow: 0px 5px 52px -5px rgba(0,18,85,0.15);
+    transition: all .3s;
+    border-radius: 15px;
+}
+
+.fav {
+    min-height: 220px;
+    width: 100%;
+    background: #ff4e80; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #ff4e80 0%, #ff9495 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #ff4e80 0%,#ff9495 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #ff4e80 0%,#ff9495 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff4e80', endColorstr='#ff9495',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    /*-webkit-box-shadow: 0px 6px 12px -4px rgba(83,158,250,0.7);
+    -moz-box-shadow: 0px 6px 12px -4px rgba(83,158,250,0.7);
+    box-shadow: 0px 6px 12px -4px rgba(83,158,250,0.7);*/
+}
+
+ion-slides {
+    width: 95%;
+    height: 250px;
+    margin: auto;
+}
+
+.card:active {
+    overflow: hidden;
+    transform: scale(.95);
+}
+
+.add {
+    float: right;
+    color: #002654;
+    margin-right: 25px;
+    font-size: 1.4em;
+}
+
+.title {
+    padding-left: 20px;
+    font-size: 3em;
+    font-weight: bolder;
+    color: #002654;
+}
+
+.favs {
+}
+
+.cards {
+}
+
+.word-datas {
+    font-size: 1.5em;
+    padding: 10px 30px;
+    color: #002654;
+    opacity: .8;
+}
+
+.card-content {
+    padding: 0;
+}
+
+.label {
+    margin: 0;
+ }
+ 
+ .item-inner {
+    padding-right: 0px!important;
+ }
+
+ .remove-icon {
+     margin-top: 10px;
+     font-size: 3em;
+ }
+
+.card-content h1 {
+    font-weight: bolder;
+    font-size: 3em;
+    color: white;
+    margin-left: 10px;
+}
+
+.top {
+    color: rgb(200, 200, 200);
 }

@@ -6,8 +6,9 @@ import { WordbaseProvider } from '../../providers/wordbase/wordbase';
 @IonicPage()
 @Component({
   selector: 'page-register',
-  templateUrl: 'register.html',
+  templateUrl: 'register.html'
 })
+
 export class RegisterPage {
   RegisterInfos = {
     username: '',

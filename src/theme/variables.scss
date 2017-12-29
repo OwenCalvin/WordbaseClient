@@ -71,7 +71,8 @@ $colors: (
 // default are overridden.
 
 @import "ionic.theme.default";
-
+@import "../pages/register/register.scss";
+@import "../pages/home/home.scss";
 
 // Ionicons
 // --------------------------------------------------

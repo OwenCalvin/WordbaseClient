@@ -21,6 +21,7 @@ import { trigger, style, transition, animate, keyframes, query, stagger } from '
     ])
   ]
 })
+
 export class AddPage {
   @ViewChild(Content) Content: Content;
 
