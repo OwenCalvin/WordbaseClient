@@ -1,4 +1,5 @@
 .content {
+    padding-top: 30px;
     padding-bottom: 25px;
 }
 
@@ -17,7 +18,7 @@
 .color {
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
-    padding: 7px 20px;
+    padding: 10px 20px;
     background: #4b87e0;
     color: white;
 }
@@ -25,6 +26,10 @@
 .word-name {
     font-weight: bold;
     margin-right: 15px;
+}
+
+.word-data {
+    margin-bottom: 15px;
 }
 
 .word-value {
@@ -45,35 +50,37 @@
     width: 90%;
     display: block;
     margin: auto;
-    margin-bottom: 30px;
+    margin-bottom: 45px;
     -webkit-box-shadow: 0px 5px 52px -5px rgba(0,18,85,0.15);
     -moz-box-shadow: 0px 5px 52px -5px rgba(0,18,85,0.15);
     box-shadow: 0px 5px 52px -5px rgba(0,18,85,0.15);
-    transition: all .3s;
+    transition: transform .3s;
     border-radius: 15px;
 }
 
 .fav {
-    min-height: 220px;
-    width: 100%;
-    background: #ff4e80; /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #ff4e80 0%, #ff9495 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #ff4e80 0%,#ff9495 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, #ff4e80 0%,#ff9495 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    margin-left: auto;
+    margin-right: auto;
+    background: #ff4e80;
+    background: -moz-linear-gradient(-45deg, #ff4e80 0%, #ff9495 100%);
+    background: -webkit-linear-gradient(-45deg, #ff4e80 0%,#ff9495 100%);
+    background: linear-gradient(135deg, #ff4e80 0%,#ff9495 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff4e80', endColorstr='#ff9495',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     /*-webkit-box-shadow: 0px 6px 12px -4px rgba(83,158,250,0.7);
     -moz-box-shadow: 0px 6px 12px -4px rgba(83,158,250,0.7);
     box-shadow: 0px 6px 12px -4px rgba(83,158,250,0.7);*/
+    transform: scale(.8);
 }
 
-ion-slides {
-    width: 95%;
-    height: 250px;
-    margin: auto;
+ion-slide {
+    width: 100%;
 }
 
-.card:active {
-    overflow: hidden;
+.swiper-slide-active .fav {
+    transform: scale(1);
+}
+
+.normal-card:active {
     transform: scale(.95);
 }
 
@@ -91,15 +98,10 @@ ion-slides {
     color: #002654;
 }
 
-.favs {
-}
-
-.cards {
-}
-
 .word-datas {
+    margin-top: 10px;
     font-size: 1.5em;
-    padding: 10px 30px;
+    padding: 8px 20px;
     color: #002654;
     opacity: .8;
 }
@@ -122,10 +124,12 @@ ion-slides {
  }
 
 .card-content h1 {
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
     font-weight: bolder;
     font-size: 3em;
     color: white;
-    margin-left: 10px;
 }
 
 .top {

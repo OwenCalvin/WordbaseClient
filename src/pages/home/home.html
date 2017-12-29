@@ -1,6 +1,6 @@
 <ion-header no-border>
   <ion-navbar>
-    <ion-title >
+    <ion-title>
       <div class="header-content username">
         {{wordbaseProvider.User.username}}
       </div>
@@ -20,8 +20,8 @@
 <ion-content>
   <div class="content">
     <div class="favs">
-      <h1 class="title">Favorites</h1>
-      <ion-slides>
+      <h1 class="title fav-title">Favorites</h1>
+      <ion-slides loop>
         <ion-slide>
           <div class="card fav">
             <div class="card-content">
@@ -32,12 +32,16 @@
         <ion-slide>
           <div class="card fav">
             <div class="card-content">
-              <h1>Facebook</h1>
+              <h1>Twitter</h1>
             </div>
           </div>
         </ion-slide>
         <ion-slide>
-          <h1>Slide 3</h1>
+          <div class="card fav">
+            <div class="card-content">
+              <h1>Instagasdfasdfram</h1>
+            </div>
+          </div>
         </ion-slide>
       </ion-slides>
     </div>
@@ -45,31 +49,31 @@
     <div class="cards">
       <h1 class="title">All worlds</h1>
       <ion-list>
-          <ion-item-sliding class="card" *ngFor="let item of Words;index as i" [@splice]="Words.length" #slidingItem>
-            <ion-item class="card-content" no-lines>
-              <div class="color">
-                <h1 class="word-title">{{item.title}}</h1>
-              </div>
-              <div class="word-datas">
-                <div *ngFor="let data of item.datas">
-                  <span class="word-name">
-                    {{data.name}}
-                  </span>
-                  <span class="word-value">
-                      {{data.value}}
-                  </span>
-                </div>
-              </div>
-            </ion-item>
-            <ion-item-options side="right">
-              <button (click)="remove(i, slidingItem)" color="danger" ion-button>
-                <span class="button-inner">
-                  <ion-icon name="ios-trash-outline" class="remove-icon"></ion-icon>
+        <ion-item-sliding class="card normal-card" *ngFor="let item of Words;index as i" [@splice]="Words.length" #slidingItem>
+          <ion-item class="card-content" no-lines>
+            <div class="color">
+              <h1 class="word-title">{{item.title}}</h1>
+            </div>
+            <div class="word-datas">
+              <div class="word-data" *ngFor="let data of item.datas">
+                <span class="word-name">
+                  {{data.name}}
                 </span>
-                <div class="button-effect"></div>
-              </button>  
-            </ion-item-options>
-          </ion-item-sliding>
+                <span class="word-value">
+                    {{data.value}}
+                </span>
+              </div>
+            </div>
+          </ion-item>
+          <ion-item-options side="right">
+            <button (click)="remove(i, slidingItem)" color="danger" ion-button>
+              <span class="button-inner">
+                <ion-icon name="ios-trash-outline" class="remove-icon"></ion-icon>
+              </span>
+              <div class="button-effect"></div>
+            </button>  
+          </ion-item-options>
+        </ion-item-sliding>
       </ion-list>
     </div>
     <div (click)="top()" class="top">
