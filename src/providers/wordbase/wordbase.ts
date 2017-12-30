@@ -4,7 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable()
 export class WordbaseProvider {
   User: any;
-  ServerURL = 'http://www.davenstudio.com';
+  ServerURL = 'http://localhost';
   ServerPort = 4000;
 
   constructor(

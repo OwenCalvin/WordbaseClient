@@ -4,6 +4,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { WordbaseProvider } from '../../providers/wordbase/wordbase';
 import { ToolboxProvider } from '../../providers/toolbox/toolbox';
 import { Clipboard } from '@ionic-native/clipboard';
+import { PressDirective } from '../../directives/gestures/gestures';
 
 @Component({
   selector: 'cards',
@@ -20,6 +21,7 @@ import { Clipboard } from '@ionic-native/clipboard';
     ])
   ]
 })
+
 export class CardsComponent {
   @Input('cards') cards;
   @Output() favChanged = new EventEmitter();
@@ -43,5 +45,13 @@ export class CardsComponent {
       this.toolboxProvider.removeFromArray(this.cards, item);
       this.favChanged.emit(item);
     });
+  }
+
+  pressStart(data) {
+    this.toolboxProvider.presentAlert(data.name, data.value);
+  }
+
+  pressEnd() {
+    this.toolboxProvider.closeAlert();
   }
 }
