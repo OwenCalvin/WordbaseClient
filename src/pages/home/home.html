@@ -1,4 +1,4 @@
-<ion-header no-border>
+<ion-header no-border [ngClass]="{'pause': toolboxProvider.CurrentAlert}">
   <ion-navbar>
     <ion-title>
       <div class="header-content username" (click)="disconnect()">
@@ -16,10 +16,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-refresher (ionRefresh)="refresh($event)">
+<ion-content [ngClass]="{'pause': toolboxProvider.CurrentAlert}">
+  <ion-refresher (ionRefresh)="refresh($event)" *ngIf="!toolboxProvider.CurrentAlert">
     <ion-refresher-content pullingIcon="ios-arrow-round-up-outline" refreshingSpinner="crescent"></ion-refresher-content>
   </ion-refresher>
+
   <div class="content" *ngIf="Words">
     <div *ngIf="Words.length + WordsFavs.length == 0">
       <h1 class="title fav-title">No words</h1>
@@ -27,13 +28,13 @@
 
     <div class="favs" *ngIf="WordsFavs.length > 0">
       <h1 class="title fav-title">Favorites</h1>
-      <cards [cards]="WordsFavs" (favChanged)="switchList($event)" #favList></cards>
+      <cards [cards]="WordsFavs" (favChanged)="switchList($event)" (copy)="copy()"></cards>
       <div class="line"></div>
     </div>
     
     <div class="cards" *ngIf="Words.length > 0">
       <h1 class="title">All words</h1>
-      <cards [cards]="Words" (favChanged)="switchList($event)" #normalList></cards>
+      <cards [cards]="Words" (favChanged)="switchList($event)" (copy)="copy()"></cards>
     </div>
 
     <div class="cards" *ngIf="Words.length + WordsFavs.length > 5">
@@ -42,4 +43,5 @@
       </div>
     </div>
   </div>
+  <message text="Copied !"></message>
 </ion-content>

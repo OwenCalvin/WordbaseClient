@@ -30,7 +30,6 @@ export class LoginPage {
       data = JSON.parse(data);
       if(data.code == 'success') {
         this.navCtrl.setRoot(HomePage);
-        this.toolboxProvider.presentToast('You are logged');
         this.wordbaseProvider.User = data.data;
       } else {
         this.toolboxProvider.formatPresentToast(data);

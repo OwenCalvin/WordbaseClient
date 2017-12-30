@@ -5,7 +5,7 @@ import { Gesture } from 'ionic-angular/gestures/gesture';
   selector: '[gestures]'
 })
 
-export class PressDirective implements OnInit, OnDestroy {
+export class GesturesDirective implements OnInit, OnDestroy {
   @Input() interval: number;
 
   @Output() onPressStart: EventEmitter<any> = new EventEmitter();

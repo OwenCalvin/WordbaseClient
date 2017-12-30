@@ -33,43 +33,12 @@ ion-header {
     color: white;
 }
 
-.active-slide .color {
-    border-top-right-radius: 0;
+ion-backdrop {
+    opacity: .1s;
 }
 
-.color {
-    display: flex;
-    justify-content: space-between;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
-    padding: 10px 20px;
-    background: rgba(27, 34, 53, 0.856);
-    color: white;
-}
-
-.card:hover, .card:active, .card:focus {
-    transform: scale(1.05);
-}
-
-.color div {
-    min-width: 0;
-}
-
-.word-title {
-    width: 95%;
-}
-
-.fav-icon {
-    padding-left: 20px;
-    transition: transform .1s;
-}
-
-.fav-icon ion-icon{
-    font-size: 1.8em;
-}
-
-.fav-icon:active {
-    transform: scale(1.3);
+.pause {
+    filter: blur(8px);
 }
 
 .popup {
@@ -81,18 +50,6 @@ ion-header {
     z-index: 99999999;
 }
 
-.word-name {
-    font-weight: bold;
-    margin-right: 15px;
-}
-
-.word-data {
-    margin-bottom: 15px;
-    text-overflow: ellipsis;
-    overflow: hidden; 
-    white-space: nowrap;
-}
-
 .line {
     width: 35%;
     background: rgba(0,18,85,0.15);
@@ -102,28 +59,8 @@ ion-header {
     margin-bottom: 35px;
 }
 
-.card {
-    overflow: hidden;
-    width: 92%;
-    display: block;
-    margin: auto;
-    margin-bottom: 50px;
-    -webkit-box-shadow: 0px 5px 52px -5px rgba(0,18,85,0.15);
-    -moz-box-shadow: 0px 5px 52px -5px rgba(0,18,85,0.15);
-    box-shadow: 0px 5px 52px -5px rgba(0,18,85,0.15);
-    transition: transform .3s;
-    border-radius: 15px;
-}
-
 .toolbar-title-md {
     padding: 0;
-}
-
-.add {
-    float: right;
-    color: #1b2235;
-    margin-right: 25px;
-    font-size: 1.4em;
 }
 
 .title {
@@ -132,41 +69,7 @@ ion-header {
     font-weight: bolder;
     color: #1b2235
 }
-
-.word-datas {
-    margin-top: 10px;
-    font-size: 1.3em;
-    padding: 8px 20px;
-    color: #233142;
-    opacity: .8;
-}
-
-.card-content {
-    padding: 0;
-}
-
-.label {
-    margin: 0;
- }
  
- .item-inner {
-    padding-right: 0px!important;
- }
-
- .remove-icon {
-     margin-top: 10px;
-     font-size: 3em;
- }
-
-.card-content h1 {
-    text-overflow: ellipsis;
-    overflow: hidden; 
-    white-space: nowrap;
-    font-weight: bolder;
-    font-size: 3em;
-    color: white;
-}
-
 .top {
     color: rgb(200, 200, 200);
 }

@@ -22,9 +22,10 @@ import { ToolboxProvider } from '../providers/toolbox/toolbox';
 
 // Components
 import { CardsComponent } from '../components/cards/cards';
+import { MessageComponent } from '../components/message/message';
 
 // Directives 
-import { PressDirective } from '../directives/gestures/gestures';
+import { GesturesDirective } from '../directives/gestures/gestures';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PressDirective } from '../directives/gestures/gestures';
     SettingsPage,
     RegisterPage,
     CardsComponent,
-    PressDirective
+    MessageComponent,
+    GesturesDirective
   ],
   imports: [
     BrowserModule,

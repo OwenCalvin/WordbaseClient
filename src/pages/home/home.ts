@@ -1,10 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, transition } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { WordbaseProvider } from '../../providers/wordbase/wordbase';
 import { ToolboxProvider } from '../../providers/toolbox/toolbox';
 import { AddPage } from '../../pages/add/add';
 import { Content } from 'ionic-angular/components/content/content';
 import { LoginPage } from '../login/login';
+import { MessageComponent } from '../../components/message/message';
 
 @Component({
   selector: 'page-home',
@@ -13,9 +14,12 @@ import { LoginPage } from '../login/login';
 
 export class HomePage {
   @ViewChild(Content) Content: Content;
+  @ViewChild(MessageComponent) message: MessageComponent;
+
   PushPage = AddPage;
   Words: any[];
   WordsFavs: any[];
+  messageDisplayed = false;
 
   constructor(
     public navCtrl: NavController, 
@@ -59,5 +63,9 @@ export class HomePage {
     this.updateWords(() => {
       refresher.complete();
     });
+  }
+
+  copy() {
+    this.message.display(1000);
   }
 }

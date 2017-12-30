@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
+import { Alert } from 'ionic-angular/components/alert/alert';
 
 @Injectable()
 export class ToolboxProvider {
-  CurrentAlert = null;
+  CurrentAlert: Alert = null;
 
   constructor(
     public toastCtrl: ToastController,
     public alertCtrl: AlertController, 
   ) {}
+
+  get AlertDisplayed() {
+    return Boolean(this.CurrentAlert);
+  }
   
   removeFromArray(array: any[], item) {
     array.splice(array.indexOf(item), 1);
@@ -31,19 +36,15 @@ export class ToolboxProvider {
     toast.present();
   }
 
-  presentAlert(title, subTitle = null, buttons = ['Ok']) {
+  presentAlert(title, subTitle = null, buttons: any[] = ['Ok']) {
     this.CurrentAlert = this.alertCtrl.create({
       title: title,
       subTitle: subTitle,
       buttons: buttons
     });
     this.CurrentAlert.present();
-  }
-
-  closeAlert() {
-    if(this.CurrentAlert) {
-      this.CurrentAlert.dismiss();
+    this.CurrentAlert.willLeave.subscribe(() => {
       this.CurrentAlert = null;
-    }
+    })
   }
 }
