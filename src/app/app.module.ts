@@ -6,6 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Clipboard } from '@ionic-native/clipboard';
+import { LongPressModule } from 'ionic-long-press';
 
 // Pages
 import { MyApp } from './app.component';
@@ -19,6 +21,9 @@ import { RegisterPage } from '../pages/register/register';
 import { WordbaseProvider } from '../providers/wordbase/wordbase';
 import { ToolboxProvider } from '../providers/toolbox/toolbox';
 
+// Components
+import { CardsComponent } from '../components/cards/cards';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -26,12 +31,14 @@ import { ToolboxProvider } from '../providers/toolbox/toolbox';
     LoginPage,
     AddPage,
     SettingsPage,
-    RegisterPage
+    RegisterPage,
+    CardsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    LongPressModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -49,6 +56,7 @@ import { ToolboxProvider } from '../providers/toolbox/toolbox';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     WordbaseProvider,
     ToolboxProvider,
+    Clipboard
   ]
 })
 export class AppModule {}

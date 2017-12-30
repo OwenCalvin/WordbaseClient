@@ -1,0 +1,32 @@
+<ion-list>
+  <ion-item-sliding class="card" *ngFor="let item of cards" [@splice]="cards.length">
+    <ion-item class="card-content" no-lines>
+      <div class="color" nowrap>
+        <div class="word-title">
+          <h1>{{item.title}}</h1>
+        </div>
+        <div class="fav-icon">
+          <ion-icon [name]="item.fav ? 'md-heart' : 'md-heart-outline'" (click)="fav(item)"></ion-icon>
+        </div>
+      </div>
+      <div class="word-datas">
+        <div class="word-data" *ngFor="let data of item.datas">
+          <span class="word-name">
+            {{data.name}}
+          </span>
+          <span class="word-value">
+            {{data.value}}
+          </span>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item-options side="right">
+      <button (click)="remove(item)" color="danger" ion-button>
+        <span class="button-inner">
+          <ion-icon name="ios-trash-outline" class="remove-icon"></ion-icon>
+        </span>
+        <div class="button-effect"></div>
+      </button>  
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>

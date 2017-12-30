@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Console } from '@angular/core/src/console';
 
 @Injectable()
 export class WordbaseProvider {
@@ -31,6 +30,10 @@ export class WordbaseProvider {
 
   register(registerInfos) {
     return this.post('register', registerInfos);
+  }
+
+  favWord(data) {
+    return this.post('fav', data);
   }
 
   disconnect(callback) {

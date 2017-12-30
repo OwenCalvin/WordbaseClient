@@ -1,7 +1,7 @@
 <ion-header no-border>
   <ion-navbar>
     <ion-title>
-      <div class="header-content username">
+      <div class="header-content username" (click)="disconnect()">
         {{wordbaseProvider.User.username}}
       </div>
     </ion-title>
@@ -9,75 +9,37 @@
     <ion-buttons end>
       <button ion-button icon-only [navPush]="PushPage">
         <div class="header-content add">
-          <ion-icon name="ios-add-circle-outline"></ion-icon>
+          <ion-icon name="ios-add-circle"></ion-icon>
         </div>
       </button>
     </ion-buttons>
-      <!--<button ion-button (click)="disconnect()">Disconnect</button>-->
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <div class="content">
-    <div class="favs">
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content pullingIcon="ios-arrow-round-up-outline" refreshingSpinner="crescent"></ion-refresher-content>
+  </ion-refresher>
+  <div class="content" *ngIf="Words">
+    <div *ngIf="Words.length + WordsFavs.length == 0">
+      <h1 class="title fav-title">No words</h1>
+    </div>
+
+    <div class="favs" *ngIf="WordsFavs.length > 0">
       <h1 class="title fav-title">Favorites</h1>
-      <ion-slides loop>
-        <ion-slide>
-          <div class="card fav">
-            <div class="card-content">
-              <h1>Facebook</h1>
-            </div>
-          </div>
-        </ion-slide>
-        <ion-slide>
-          <div class="card fav">
-            <div class="card-content">
-              <h1>Twitter</h1>
-            </div>
-          </div>
-        </ion-slide>
-        <ion-slide>
-          <div class="card fav">
-            <div class="card-content">
-              <h1>Instagasdfasdfram</h1>
-            </div>
-          </div>
-        </ion-slide>
-      </ion-slides>
+      <cards [cards]="WordsFavs" (favChanged)="switchList($event)" #favList></cards>
+      <div class="line"></div>
     </div>
-    <!--<div class="line"></div>-->
-    <div class="cards">
+    
+    <div class="cards" *ngIf="Words.length > 0">
       <h1 class="title">All words</h1>
-      <ion-list>
-        <ion-item-sliding class="card normal-card" *ngFor="let item of Words;index as i" [@splice]="Words.length" #slidingItem>
-          <ion-item class="card-content" no-lines>
-            <div class="color">
-              <h1 class="word-title">{{item.title}}</h1>
-            </div>
-            <div class="word-datas">
-              <div class="word-data" *ngFor="let data of item.datas">
-                <span class="word-name">
-                  {{data.name}}
-                </span>
-                <span class="word-value">
-                    {{data.value}}
-                </span>
-              </div>
-            </div>
-          </ion-item>
-          <ion-item-options side="right">
-            <button (click)="remove(i, slidingItem)" color="danger" ion-button>
-              <span class="button-inner">
-                <ion-icon name="ios-trash-outline" class="remove-icon"></ion-icon>
-              </span>
-              <div class="button-effect"></div>
-            </button>  
-          </ion-item-options>
-        </ion-item-sliding>
-      </ion-list>
+      <cards [cards]="Words" (favChanged)="switchList($event)" #normalList></cards>
     </div>
-    <div (click)="top()" class="top">
-      <ion-icon name="ios-arrow-dropup-outline"></ion-icon>
+
+    <div class="cards" *ngIf="Words.length + WordsFavs.length > 5">
+      <div (click)="top()" class="top">
+        <ion-icon name="ios-arrow-dropup-outline" #target></ion-icon>
+      </div>
     </div>
   </div>
 </ion-content>
