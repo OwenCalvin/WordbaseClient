@@ -7,10 +7,12 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   animations: [
     trigger('display', [
       state('active', style({
-        bottom: '10px'})),
+        transform: 'translateX(-50%)',
+        left: '50%'
+      })),
       state('inactive', style({
       })),
-      transition('* => *', animate('.2s ease')),
+      transition('* => *', animate('.3s ease')),
     ])
   ]
 })
@@ -26,11 +28,13 @@ export class MessageComponent {
   }
 
   display(Time) {
-    console.log('test');
     this.Displayed = true;
     setTimeout(() => {
       this.Displayed = false;
     }, Time);
   }
   
+  close() {
+    this.Displayed = false;
+  }
 }

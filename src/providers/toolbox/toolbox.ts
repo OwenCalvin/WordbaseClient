@@ -30,21 +30,16 @@ export class ToolboxProvider {
       duration: duration,
       position: position
     });
-  
-    toast.onDidDismiss(() => {});
-  
     toast.present();
   }
 
-  presentAlert(title, subTitle = null, buttons: any[] = ['Ok']) {
+  presentAlert(title, subTitle = null, buttons: any[] = ['Ok'], inputs: any[] = null) {
     this.CurrentAlert = this.alertCtrl.create({
       title: title,
       subTitle: subTitle,
-      buttons: buttons
+      buttons: buttons,
+      inputs: inputs
     });
     this.CurrentAlert.present();
-    this.CurrentAlert.willLeave.subscribe(() => {
-      this.CurrentAlert = null;
-    })
   }
 }

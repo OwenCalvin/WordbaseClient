@@ -26,7 +26,7 @@ export class CardsComponent {
   @Input('cards') cards;
   @Output() favChanged = new EventEmitter();
   @Output() copy = new EventEmitter();
-  popupActive = false;
+  @Output() edit = new EventEmitter();
 
   constructor(
     public wordbaseProvider: WordbaseProvider,
@@ -48,10 +48,46 @@ export class CardsComponent {
     });
   }
 
-  pressStart(data) {
+  pressStart(index, item, data) {
     this.toolboxProvider.presentAlert(data.name, data.value,
       [
         { text: 'Close' },
+        {
+          text: 'Edit',
+          handler: () => {
+            this.toolboxProvider.presentAlert('Edit', item.title, 
+            [
+              {
+                text: 'Close'
+              },
+              {
+                text: 'Save',
+                handler: values => {
+                  this.wordbaseProvider.editWord(item._id, index, {
+                    name: values.name,
+                    value: values.value
+                  }).subscribe(res => {
+                    item.datas[index] = {
+                      name: values.name,
+                      value: values.value
+                    };
+                  });
+                }
+              }
+            ],
+            [
+              {
+                name: 'name',
+                placeholder: data.name
+              },
+              {
+                name: 'value',
+                placeholder: data.value,
+              }
+            ]
+            );
+          }
+        },
         {
           text: 'Copy',
           handler: () => {

@@ -1,4 +1,4 @@
-import { Component, ViewChild, transition } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { WordbaseProvider } from '../../providers/wordbase/wordbase';
 import { ToolboxProvider } from '../../providers/toolbox/toolbox';
@@ -66,6 +66,6 @@ export class HomePage {
   }
 
   copy() {
-    this.message.display(1000);
+    this.message.display(2000);
   }
 }

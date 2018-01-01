@@ -1,14 +1,13 @@
 <ion-content padding>
+  <h1>Login</h1>
   <form (ngSubmit)="login()">
     <ion-item>
-      <ion-label floating>Username</ion-label>
-      <ion-input type="text" name="inputLog" [(ngModel)]="LogInfos.log" [ngModelOptions]="{updateOn: 'submit'}"></ion-input>
+      <ion-input placeholder="Username" clearInput no-lines type="text" name="inputLog" [(ngModel)]="LogInfos.log" [ngModelOptions]="{updateOn: 'submit'}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" name="inputPassword" [(ngModel)]="LogInfos.password" [ngModelOptions]="{updateOn: 'submit'}"></ion-input>
+      <ion-input placeholder="Password" clearInput no-lines type="password" name="inputPassword" [(ngModel)]="LogInfos.password" [ngModelOptions]="{updateOn: 'submit'}"></ion-input>
     </ion-item>
-    <button type="submit" ion-button round>Login</button>
-    <button ion-button round [navPush]="PushPage">Register</button>
+    <button type="submit" ion-button round>Go</button>
   </form>
+  <button ion-button round [navPush]="PushPage">Register</button>
 </ion-content>

@@ -1,4 +1,4 @@
-<ion-header no-border [ngClass]="{'pause': toolboxProvider.CurrentAlert}">
+<ion-header no-border>
   <ion-navbar>
     <ion-title>
       <div class="header-content username" (click)="disconnect()">
@@ -16,8 +16,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content [ngClass]="{'pause': toolboxProvider.CurrentAlert}">
-  <ion-refresher (ionRefresh)="refresh($event)" *ngIf="!toolboxProvider.CurrentAlert">
+<ion-content>
+  <ion-refresher (ionRefresh)="refresh($event)">
     <ion-refresher-content pullingIcon="ios-arrow-round-up-outline" refreshingSpinner="crescent"></ion-refresher-content>
   </ion-refresher>
 
@@ -37,7 +37,7 @@
       <cards [cards]="Words" (favChanged)="switchList($event)" (copy)="copy()"></cards>
     </div>
 
-    <div class="cards" *ngIf="Words.length + WordsFavs.length > 5">
+    <div class="cards" *ngIf="Words.length + WordsFavs.length > 0">
       <div (click)="top()" class="top">
         <ion-icon name="ios-arrow-dropup-outline" #target></ion-icon>
       </div>

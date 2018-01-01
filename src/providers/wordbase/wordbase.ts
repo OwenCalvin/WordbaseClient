@@ -24,16 +24,24 @@ export class WordbaseProvider {
     return this.post('delete', data);
   }
 
+  favWord(data) {
+    return this.post('fav', data);
+  }
+
+  editWord(id, index, data) {
+    return this.post('edit', {
+      id: id,
+      index: index,
+      data: data
+    });
+  }
+
   login(logInfos) {
     return this.post('login', logInfos);
   }
 
   register(registerInfos) {
     return this.post('register', registerInfos);
-  }
-
-  favWord(data) {
-    return this.post('fav', data);
   }
 
   disconnect(callback) {

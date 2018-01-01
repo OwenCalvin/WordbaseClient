@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="word-datas">
-        <div gestures [interval]="250" (onPressStart)="pressStart(data)" class="word-data" *ngFor="let data of item.datas">
+        <div gestures [interval]="250" (onPressStart)="pressStart(i, item, data)" class="word-data" *ngFor="let data of item.datas;index as i">
           <span class="word-name">
             {{data.name}}
           </span>
