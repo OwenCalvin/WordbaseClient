@@ -2,7 +2,7 @@
   <ion-item-sliding class="card" *ngFor="let item of cards" [@splice]="cards.length">
     <ion-item class="card-content" no-lines>
       <div class="color" nowrap>
-        <div class="word-title">
+        <div gestures [interval]="250" (onPressStart)="titlePressStart('title', item, item.title)" class="word-title">
           <h1>{{item.title}}</h1>
         </div>
         <div class="fav-icon">
@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="word-datas">
-        <div gestures [interval]="250" (onPressStart)="pressStart(i, item, data)" class="word-data" *ngFor="let data of item.datas;index as i">
+        <div gestures [interval]="250" (onPressStart)="dataPressStart(i, item, data)" class="word-data" *ngFor="let data of item.datas;index as i">
           <span class="word-name">
             {{data.name}}
           </span>

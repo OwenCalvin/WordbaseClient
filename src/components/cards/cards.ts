@@ -47,51 +47,81 @@ export class CardsComponent {
       this.favChanged.emit(item);
     });
   }
+  
+  titlePressStart(whatToEdit, item, data) {
+    this.cardAlert(data, data, data, 
+      {
+        buttons: [
+          {
+            text: 'Close'
+          },
+          {
+            text: 'Save',
+            handler: values => {
+              this.wordbaseProvider.editWord(item._id, whatToEdit, values.title).subscribe(res => {
+                item.title = values.title;
+              });
+            }
+          }
+        ],
+        inputs: [
+          {
+            name: 'title',
+            placeholder: data
+          }
+        ]
+      }
+    );
+  }
 
-  pressStart(index, item, data) {
-    this.toolboxProvider.presentAlert(data.name, data.value,
+  dataPressStart(index, item, data) {
+    let whatToEdit = 'datas.' + index;
+    this.cardAlert(data.name, data.value, data.value,
+      {
+        buttons: [
+          {
+            text: 'Close'
+          },
+          {
+            text: 'Save',
+            handler: values => {
+              this.wordbaseProvider.editWord(item._id, whatToEdit, {
+                name: values.name,
+                value: values.value
+              }).subscribe(res => {
+                item.datas[index] = values;
+              });
+            }
+          }
+        ],
+        inputs: [
+          {
+            name: 'name',
+            placeholder: data.name
+          },
+          {
+            name: 'value',
+            placeholder: data.value,
+          }
+        ]
+      }
+    );
+  }
+
+  cardAlert(title, subTitle, copy, controls) {
+    this.toolboxProvider.presentAlert(title, subTitle,
       [
         { text: 'Close' },
         {
           text: 'Edit',
           handler: () => {
-            this.toolboxProvider.presentAlert('Edit', item.title, 
-            [
-              {
-                text: 'Close'
-              },
-              {
-                text: 'Save',
-                handler: values => {
-                  this.wordbaseProvider.editWord(item._id, index, {
-                    name: values.name,
-                    value: values.value
-                  }).subscribe(res => {
-                    item.datas[index] = {
-                      name: values.name,
-                      value: values.value
-                    };
-                  });
-                }
-              }
-            ],
-            [
-              {
-                name: 'name',
-                placeholder: data.name
-              },
-              {
-                name: 'value',
-                placeholder: data.value,
-              }
-            ]
-            );
+            this.toolboxProvider.presentAlert('Edit', subTitle, controls.buttons, controls.inputs);
           }
         },
         {
           text: 'Copy',
           handler: () => {
-            this.clipboard.copy(data.value);
+            this.clipboard.copy(copy);
             this.copy.emit();
           } 
       }]

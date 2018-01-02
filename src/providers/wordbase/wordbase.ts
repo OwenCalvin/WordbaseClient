@@ -28,11 +28,12 @@ export class WordbaseProvider {
     return this.post('fav', data);
   }
 
-  editWord(id, index, data) {
+  editWord(id, what, data) {
     return this.post('edit', {
       id: id,
-      index: index,
-      data: data
+      update: {
+        [what]: data
+      }
     });
   }
 
