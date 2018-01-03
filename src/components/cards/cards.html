@@ -21,12 +21,18 @@
       </div>
     </ion-item>
     <ion-item-options side="right">
-      <button (click)="remove(item)" color="danger" ion-button>
+      <button (click)="duplicate(item)" color="primary" ion-button>
         <span class="button-inner">
-          <ion-icon name="ios-trash-outline" class="remove-icon"></ion-icon>
+          <ion-icon name="ios-copy-outline" class="slide-icon"></ion-icon>
         </span>
         <div class="button-effect"></div>
-      </button>  
+      </button>
+      <button (click)="remove(item)" color="danger" ion-button>
+        <span class="button-inner">
+          <ion-icon name="ios-trash-outline" class="slide-icon"></ion-icon>
+        </span>
+        <div class="button-effect"></div>
+      </button>
     </ion-item-options>
   </ion-item-sliding>
 </ion-list>

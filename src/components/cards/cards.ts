@@ -48,126 +48,147 @@ export class CardsComponent {
     });
   }
   
+  duplicate(item) {
+    this.wordbaseProvider.insertWord({
+      title: item.title,
+      fav: item.fav,
+      datas: item.datas
+    }).subscribe(word => {
+      this.cards.push(JSON.parse(word));
+    });
+  }
+
   titlePressStart(whatToEdit, item, data) {
-    this.cardAlert(data, data, data, 
-      {
-        buttons: [
-          {
-            text: 'Close'
-          },
-          {
-            text: 'Save',
-            handler: values => {
-              this.wordbaseProvider.editWord(item._id, whatToEdit, values.title).subscribe(newItem => {
-                item.title = JSON.parse(newItem).title;
-              });
-            }
+    this.toolboxProvider.presentAlert(data, null, 
+      [
+        {
+          text: 'Close'
+        },
+        {
+          text: 'Copy',
+          handler: () => {
+            this.copyText(data);
           }
-        ],
-        inputs: [
-          {
-            name: 'title',
-            placeholder: data,
-            value: data
-          }
-        ]
-      },
-      {
-        text: 'Add',
-        handler: () => {
-          this.toolboxProvider.presentAlert('Add', null, 
-            [
-              {
-                text: 'Close'
-              },
-              {
-                text: 'Save',
-                handler: values => {
-                  this.wordbaseProvider.addData(item._id, values).subscribe((newItem: any) => {
-                    item.datas = JSON.parse(newItem).datas;
-                  });
+        },
+        {
+          text: 'Edit',
+          handler: () => {
+            this.toolboxProvider.presentAlert('Edit', data.name,
+              [
+                {
+                  text: 'Close'
+                },
+                {
+                  text: 'Save',
+                  handler: values => {
+                    this.wordbaseProvider.editWord(item._id, whatToEdit, values.title).subscribe(newItem => {
+                      item.title = JSON.parse(newItem).title;
+                    });
+                  }
                 }
-              }
-            ],
-            [
-              {
-                name: 'name',
-                placeholder: 'Name'
-              },
-              {
-                name: 'value',
-                placeholder: 'Value'
-              }
-            ]
-          );
+              ],
+              [
+                {
+                  name: 'title',
+                  placeholder: data,
+                  value: data
+                }
+              ]
+            ); 
+          }
+        },
+        {
+          text: 'Add',
+          handler: () => {
+            this.toolboxProvider.presentAlert('Add', null, 
+              [
+                {
+                  text: 'Close'
+                },
+                {
+                  text: 'Save',
+                  handler: values => {
+                    this.wordbaseProvider.addData(item._id, values).subscribe((newItem: any) => {
+                      item.datas = JSON.parse(newItem).datas;
+                    });
+                  }
+                }
+              ],
+              [
+                {
+                  name: 'name',
+                  placeholder: 'Name'
+                },
+                {
+                  name: 'value',
+                  placeholder: 'Value'
+                }
+              ]
+            );
+          }
         }
-      }
+      ]
     );
   }
 
   dataPressStart(index, item, data) {
     let what = 'datas.' + index;
-    this.cardAlert(data.name, data.value, data.value,
-      {
-        buttons: [
-          {
-            text: 'Close'
-          },
-          {
-            text: 'Save',
-            handler: values => {
-              this.wordbaseProvider.editWord(item._id, what, {
-                name: values.name,
-                value: values.value
-              }).subscribe(newItem => {
-                item.datas = JSON.parse(newItem).datas;
-              });
-            }
-          }
-        ],
-        inputs: [
-          {
-            name: 'name',
-            placeholder: data.name,
-            value: data.name
-          },
-          {
-            name: 'value',
-            placeholder: data.value,
-            value: data.value,
-          }
-        ]
-      },
-      {
-        text: 'Delete',
-        handler: () => {
-          this.wordbaseProvider.spliceData(item._id, data._id).subscribe(newItem => {
-            item.datas = JSON.parse(newItem).datas;
-          });
-        }
-      }
-    );
-  }
-
-  cardAlert(title, subTitle, copy, controls, button = {}) {
-    this.toolboxProvider.presentAlert(title, subTitle,
+    this.toolboxProvider.presentAlert(data.name, data.value,
       [
         { text: 'Close' },
         {
           text: 'Copy',
           handler: () => {
-            this.clipboard.copy(copy);
-            this.copy.emit();
+            this.copyText(data.value);
           } 
         },
         {
           text: 'Edit',
           handler: () => {
-            this.toolboxProvider.presentAlert('Edit', subTitle, controls.buttons, controls.inputs);
+            this.toolboxProvider.presentAlert('Edit', data.name, 
+              [
+                { text: 'Close' },
+                {
+                  text: 'Save',
+                  handler: values => {
+                    this.wordbaseProvider.editWord(item._id, what, {
+                      name: values.name,
+                      value: values.value
+                    }).subscribe(newItem => {
+                      item.datas = JSON.parse(newItem).datas;
+                    });
+                  }
+                }
+              ],
+              [
+                {
+                  name: 'name',
+                  placeholder: data.name,
+                  value: data.name
+                },
+                {
+                  name: 'value',
+                  placeholder: data.value,
+                  value: data.value,
+                }
+              ]
+            );
           }
         },
-        button
-      ]
+        {
+          text: 'Delete',
+          handler: () => {
+            this.wordbaseProvider.spliceData(item._id, data._id).subscribe(newItem => {
+              item.datas = JSON.parse(newItem).datas;
+            });
+          }
+        }
+      ],
     );
+  }
+
+  copyText(text) {
+    this.clipboard.copy(text);
+    this.copy.emit();
   }
 }
