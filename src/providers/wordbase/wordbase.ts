@@ -36,6 +36,20 @@ export class WordbaseProvider {
       }
     });
   }
+  
+  spliceData(id, dataId) {
+    return this.post('spliceData', {
+      id: id,
+      splice: dataId
+    });
+  }
+
+  addData(id, data) {
+    return this.post('addData', {
+      id: id,
+      data: data
+    })
+  }
 
   login(logInfos) {
     return this.post('login', logInfos);

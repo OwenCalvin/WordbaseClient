@@ -41,7 +41,7 @@ export class CardsComponent {
   }
 
   fav(item) {
-    this.wordbaseProvider.favWord(item).subscribe(data => {
+    this.wordbaseProvider.favWord(item).subscribe(newItem => {
       item.fav = !item.fav;
       this.toolboxProvider.removeFromArray(this.cards, item);
       this.favChanged.emit(item);
@@ -58,8 +58,8 @@ export class CardsComponent {
           {
             text: 'Save',
             handler: values => {
-              this.wordbaseProvider.editWord(item._id, whatToEdit, values.title).subscribe(res => {
-                item.title = values.title;
+              this.wordbaseProvider.editWord(item._id, whatToEdit, values.title).subscribe(newItem => {
+                item.title = JSON.parse(newItem).title;
               });
             }
           }
@@ -67,15 +67,46 @@ export class CardsComponent {
         inputs: [
           {
             name: 'title',
-            placeholder: data
+            placeholder: data,
+            value: data
           }
         ]
+      },
+      {
+        text: 'Add',
+        handler: () => {
+          this.toolboxProvider.presentAlert('Add', null, 
+            [
+              {
+                text: 'Close'
+              },
+              {
+                text: 'Save',
+                handler: values => {
+                  this.wordbaseProvider.addData(item._id, values).subscribe((newItem: any) => {
+                    item.datas = JSON.parse(newItem).datas;
+                  });
+                }
+              }
+            ],
+            [
+              {
+                name: 'name',
+                placeholder: 'Name'
+              },
+              {
+                name: 'value',
+                placeholder: 'Value'
+              }
+            ]
+          );
+        }
       }
     );
   }
 
   dataPressStart(index, item, data) {
-    let whatToEdit = 'datas.' + index;
+    let what = 'datas.' + index;
     this.cardAlert(data.name, data.value, data.value,
       {
         buttons: [
@@ -85,11 +116,11 @@ export class CardsComponent {
           {
             text: 'Save',
             handler: values => {
-              this.wordbaseProvider.editWord(item._id, whatToEdit, {
+              this.wordbaseProvider.editWord(item._id, what, {
                 name: values.name,
                 value: values.value
-              }).subscribe(res => {
-                item.datas[index] = values;
+              }).subscribe(newItem => {
+                item.datas = JSON.parse(newItem).datas;
               });
             }
           }
@@ -97,34 +128,46 @@ export class CardsComponent {
         inputs: [
           {
             name: 'name',
-            placeholder: data.name
+            placeholder: data.name,
+            value: data.name
           },
           {
             name: 'value',
             placeholder: data.value,
+            value: data.value,
           }
         ]
+      },
+      {
+        text: 'Delete',
+        handler: () => {
+          this.wordbaseProvider.spliceData(item._id, data._id).subscribe(newItem => {
+            item.datas = JSON.parse(newItem).datas;
+          });
+        }
       }
     );
   }
 
-  cardAlert(title, subTitle, copy, controls) {
+  cardAlert(title, subTitle, copy, controls, button = {}) {
     this.toolboxProvider.presentAlert(title, subTitle,
       [
         { text: 'Close' },
-        {
-          text: 'Edit',
-          handler: () => {
-            this.toolboxProvider.presentAlert('Edit', subTitle, controls.buttons, controls.inputs);
-          }
-        },
         {
           text: 'Copy',
           handler: () => {
             this.clipboard.copy(copy);
             this.copy.emit();
           } 
-      }]
+        },
+        {
+          text: 'Edit',
+          handler: () => {
+            this.toolboxProvider.presentAlert('Edit', subTitle, controls.buttons, controls.inputs);
+          }
+        },
+        button
+      ]
     );
   }
 }
